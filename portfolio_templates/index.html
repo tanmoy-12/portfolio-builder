@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>{{ name }}'s Portfolio</title>
+    <style>
+        body {
+            background-color: {{ color_theme }};
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ name }}</h1>
+        <p>{{ profession }}</p>
+        {% if photo_path %}
+        <img src="photo.jpg" alt="{{ name }}" style="width:150px;">
+        {% endif %}
+    </header>
+    <section>
+        <h2>Bio</h2>
+        <p>{{ bio }}</p>
+
+        <h2>Education</h2>
+        <p>{{ education }}</p>
+
+        <h2>Skills</h2>
+        <ul>
+        {% for skill in skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+        </ul>
+
+        {% if research %}
+        <h2>Research/Publication</h2>
+        <p>{{ research }}</p>
+        {% endif %}
+
+        {% if interests %}
+        <h2>Interests</h2>
+        <p>{{ interests }}</p>
+        {% endif %}
+
+        {% if awards %}
+        <h2>Awards & Certificates</h2>
+        <p>{{ awards }}</p>
+        {% endif %}
+
+        <h2>Contact</h2>
+        <p>Email: {{ email }}</p>
+        <p>Phone: {{ phone }}</p>
+        <p>Address: {{ address }}</p>
+        <p>Social Media: {{ social_media }}</p>
+
+        {% if projects %}
+        <h2>Projects</h2>
+        <ul>
+        {% for project in projects %}
+            <li>{{ project }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+
+        <h2>Experience</h2>
+        <p>{{ experience }}</p>
+
+        {% if resume_path %}
+        <h2>Resume</h2>
+        <a href="resume.pdf">Download Resume</a>
+        {% endif %}
+    </section>
+</body>
+</html>
