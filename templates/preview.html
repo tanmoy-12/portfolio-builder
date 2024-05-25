@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Preview</title>
+</head>
+<body>
+    <h1>Portfolio Preview</h1>
+    <div id="preview">
+        {{ rendered_html|safe }}
+    </div>
+    <form action="/generate" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="name" value="{{ form_data['name'] }}">
+        <input type="hidden" name="profession" value="{{ form_data['profession'] }}">
+        <input type="hidden" name="bio" value="{{ form_data['bio'] }}">
+        <input type="hidden" name="education" value="{{ form_data['education'] }}">
+        <input type="hidden" name="skills" value="{{ form_data['skills'] }}">
+        <input type="hidden" name="research" value="{{ form_data['research'] }}">
+        <input type="hidden" name="interests" value="{{ form_data['interests'] }}">
+        <input type="hidden" name="awards" value="{{ form_data['awards'] }}">
+        <input type="hidden" name="email" value="{{ form_data['email'] }}">
+        <input type="hidden" name="phone" value="{{ form_data['phone'] }}">
+        <input type="hidden" name="address" value="{{ form_data['address'] }}">
+        <input type="hidden" name="social_media" value="{{ form_data['social_media'] }}">
+        <input type="hidden" name="projects" value="{{ form_data['projects'] }}">
+        <input type="hidden" name="experience" value="{{ form_data['experience'] }}">
+        <input type="hidden" name="color_theme" value="{{ form_data['color_theme'] }}">
+        <button type="submit">Download Portfolio</button>
+    </form>
+    <form action="/" method="GET">
+        <button type="submit">Edit Information</button>
+    </form>
+</body>
+</html>
