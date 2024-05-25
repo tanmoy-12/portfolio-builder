@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Portfolio Builder</h1>
-    <form action="/preview" method="POST" enctype="multipart/form-data">
+    <form ><!--action="/preview" method="POST" enctype="multipart/form-data"-->
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required><br>
 
@@ -71,4 +71,19 @@
         <button type="submit">Preview Portfolio</button>
     </form>
 </body>
+<script>
+    document.getElementById('portfolioForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+  
+      const response = await fetch('/.netlify/functions/submit-form', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+  
+      const result = await response.json();
+      alert(result.message);
+    });
+  </script>
 </html>
