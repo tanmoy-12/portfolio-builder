@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+header img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+section {
+    margin: 20px;
+}
+
+h3 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.blue {
+    background-color: #e0f7fa;
+}
+
+/* Add more color themes as needed */
