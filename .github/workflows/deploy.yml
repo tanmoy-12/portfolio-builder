@@ -24,10 +24,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate Portfolio
-        run: python scripts/generate_portfolio.py
+        run: python generate_portfolio.py
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
