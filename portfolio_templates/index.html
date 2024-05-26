@@ -3,73 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>{{ name }}'s Portfolio</title>
-    <style>
-        body {
-            background-color: {{ color_theme }};
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="{{ color_theme }}">
     <header>
-        <h1>{{ name }}</h1>
-        <p>{{ profession }}</p>
-        {% if photo_path %}
-        <img src="photo.jpg" alt="{{ name }}" style="width:150px;">
-        {% endif %}
+        <div class="container">
+            {% if photo_path %}
+            <img src="photo.jpg" alt="{{ name }}" class="profile-photo">
+            {% endif %}
+            <h1>{{ name }}</h1>
+            <h2>{{ profession }}</h2>
+        </div>
     </header>
-    <section>
-        <h2>Bio</h2>
-        <p>{{ bio }}</p>
-
-        <h2>Education</h2>
-        <p>{{ education }}</p>
-
-        <h2>Skills</h2>
-        <ul>
-        {% for skill in skills %}
-            <li>{{ skill }}</li>
-        {% endfor %}
-        </ul>
-
-        {% if research %}
-        <h2>Research/Publication</h2>
-        <p>{{ research }}</p>
-        {% endif %}
-
-        {% if interests %}
-        <h2>Interests</h2>
-        <p>{{ interests }}</p>
-        {% endif %}
-
-        {% if awards %}
-        <h2>Awards & Certificates</h2>
-        <p>{{ awards }}</p>
-        {% endif %}
-
-        <h2>Contact</h2>
-        <p>Email: {{ email }}</p>
-        <p>Phone: {{ phone }}</p>
-        <p>Address: {{ address }}</p>
-        <p>Social Media: {{ social_media }}</p>
-
-        {% if projects %}
-        <h2>Projects</h2>
-        <ul>
-        {% for project in projects %}
-            <li>{{ project }}</li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-
-        <h2>Experience</h2>
-        <p>{{ experience }}</p>
-
-        {% if resume_path %}
-        <h2>Resume</h2>
-        <a href="resume.pdf">Download Resume</a>
-        {% endif %}
-    </section>
+    <main>
+        <div class="container">
+            <section class="bio">
+                <h2>Bio</h2>
+                <p>{{ bio }}</p>
+            </section>
+            <section class="education">
+                <h2>Education</h2>
+                <p>{{ education }}</p>
+            </section>
+            {% if skills %}
+            <section class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    {% for skill in skills %}
+                    <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+            {% if research %}
+            <section class="research">
+                <h2>Research/Publications</h2>
+                <p>{{ research }}</p>
+            </section>
+            {% endif %}
+            {% if interests %}
+            <section class="interests">
+                <h2>Interests</h2>
+                <p>{{ interests }}</p>
+            </section>
+            {% endif %}
+            {% if awards %}
+            <section class="awards">
+                <h2>Awards & Certificates</h2>
+                <p>{{ awards }}</p>
+            </section>
+            {% endif %}
+            <section class="contact">
+                <h2>Contact</h2>
+                <p>Email: {{ email }}</p>
+                <p>Phone: {{ phone }}</p>
+                <p>Address: {{ address }}</p>
+                <p>Social Media: {{ social_media }}</p>
+            </section>
+            {% if projects %}
+            <section class="projects">
+                <h2>Projects</h2>
+                {% for project in projects %}
+                <div class="project">
+                    <h3>{{ project.name }}</h3>
+                    <p>{{ project.date }}</p>
+                    <p>{{ project.details }}</p>
+                    {% if project.website %}
+                    <p><a href="{{ project.website }}" target="_blank">Project Link</a></p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+            <section class="experience">
+                <h2>Experience</h2>
+                <p>{{ experience }}</p>
+            </section>
+            {% if resume_path %}
+            <section class="resume">
+                <h2>Resume</h2>
+                <p><a href="resume.pdf" download>Download Resume</a></p>
+            </section>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; {{ name }}'s Portfolio</p>
+        </div>
+    </footer>
 </body>
 </html>
